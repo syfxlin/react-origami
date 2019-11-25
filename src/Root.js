@@ -1,5 +1,5 @@
 import React from 'react';
-import StoreProvider from './StoreProvider';
+import StoreProvider from './store/StoreProvider';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 

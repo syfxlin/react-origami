@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import logo from './logo.svg';
-import './App.css';
-import { StoreContext } from './StoreProvider';
+import './App.less';
+import { StoreContext } from './store/StoreProvider';
 import { Link } from 'react-router-dom';
 import RouteView from './RouteView';
 
