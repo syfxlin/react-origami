@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { StoreContext } from './StoreProvider';
+import { Route, Link } from 'react-router-dom';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <button onClick={() => this.context.actions.addCount(1)}>
-            Count: {this.context.state.count}
-          </button>
-        </header>
-      </div>
-    );
-  }
+export default function App() {
+  const { state, actions } = useContext(StoreContext);
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <Route
+          path="/a"
+          component={() => (
+            <p>
+              Edit <code>src/App.js</code> and save to reload.
+            </p>
+          )}
+        />
+        <Route
+          path="/b"
+          component={() => (
+            <button onClick={() => actions.addCount(1)}>
+              Count: {state.count}
+            </button>
+          )}
+        />
+        <Link to="/a">To a</Link>
+        <Link to="/b">To b</Link>
+      </header>
+    </div>
+  );
 }
-
-App.contextType = StoreContext;
-
-export default App;
