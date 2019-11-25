@@ -1,6 +1,6 @@
 import React from 'react';
 import StoreProvider from './store/StoreProvider';
-import App from './App';
+import App from './pages/App';
 import { BrowserRouter } from 'react-router-dom';
 
 export default function Root() {

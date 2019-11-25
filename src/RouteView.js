@@ -22,7 +22,11 @@ export default function RouteView(props) {
         );
       })}
       {alias.map(item => (
-        <Redirect from={item.from} to={item.to} />
+        <Redirect
+          from={item.from}
+          to={item.to}
+          key={item.from + '-' + item.to}
+        />
       ))}
     </Switch>
   );
