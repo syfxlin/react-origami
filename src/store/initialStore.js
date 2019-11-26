@@ -26,11 +26,40 @@ export const initialState = {
       ]
     }
   ],
+  footerText: `<span class="my-face">(●'◡'●)ﾉ</span> © 2019 Otstar Cloud<br />站点已经运行了<span id="timeDate">878天</span><span id="times">21小时32分26秒</span>`,
   postPage: 1,
+  postPageLinks: [
+    'http://origami.test/page/1',
+    'http://origami.test/page/2',
+    'http://origami.test/page/3',
+    'http://origami.test/page/4',
+    'http://origami.test/page/5',
+    'http://origami.test/page/6'
+  ],
   postList: null,
   navMenu: null,
   postTags: null,
   postCategories: null,
+  postArchive: {
+    1: {
+      id: 1,
+      name: '2019年一月',
+      link: 'http://origami.test/2019/01',
+      count: 1
+    },
+    2: {
+      id: 2,
+      name: '2019年一月',
+      link: 'http://origami.test/2019/01',
+      count: 2
+    },
+    3: {
+      id: 3,
+      name: '2019年一月',
+      link: 'http://origami.test/2019/01',
+      count: 3
+    }
+  },
   loaded: {
     first: false
   },

@@ -3,6 +3,7 @@ import './App.less';
 import { StoreContext } from '../store/StoreProvider';
 import Header from '../components/Header';
 import Main from '../components/Main';
+import Footer from '../components/Footer';
 
 export default function App() {
   const { actions } = useContext(StoreContext);
@@ -21,6 +22,7 @@ export default function App() {
     <div className="App">
       <Header />
       <Main />
+      <Footer />
     </div>
   );
 }

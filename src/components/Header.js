@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { StoreContext } from '../store/StoreProvider';
 import HeaderMenu from './HeaderMenu';
 import HeaderSearch from './HeaderSearch';
