@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { StoreContext } from '../store/StoreProvider';
 
 export default function PostListItem(props) {
-  const { item, postTags, postCategories } = props;
+  const { item } = props;
+  const { postTags, postCategories } = useContext(StoreContext).state;
   return (
     <article className="card">
       <div className="card-header post-info">

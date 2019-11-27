@@ -4,24 +4,23 @@ import PostListItem from './PostListItem';
 import Pagination from './Pagination';
 
 export default function PostList(props) {
-  const {
-    postList,
-    postTags,
-    postCategories,
-    postPage,
-    postPageLinks
-  } = useContext(StoreContext).state;
+  const { state, actions } = useContext(StoreContext);
+  const { postList, postPage, postPageCount } = state;
+  const { setPostPage, fetchPostList } = actions;
+  const toPage = page => {
+    setPostPage(page);
+    fetchPostList(page);
+  };
   return (
     <section className="post-list column col-8 col-md-12">
       {postList.map(item => (
-        <PostListItem
-          item={item}
-          postTags={postTags}
-          postCategories={postCategories}
-          key={item.id}
-        />
+        <PostListItem item={item} key={item.id} />
       ))}
-      <Pagination pageLinks={postPageLinks} currPage={postPage} />
+      <Pagination
+        pageCount={postPageCount}
+        currPage={postPage}
+        toPage={toPage}
+      />
     </section>
   );
 }

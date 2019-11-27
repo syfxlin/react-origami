@@ -28,14 +28,7 @@ export const initialState = {
   ],
   footerText: `<span class="my-face">(●'◡'●)ﾉ</span> © 2019 Otstar Cloud<br />站点已经运行了<span id="timeDate">878天</span><span id="times">21小时32分26秒</span>`,
   postPage: 1,
-  postPageLinks: [
-    'http://origami.test/page/1',
-    'http://origami.test/page/2',
-    'http://origami.test/page/3',
-    'http://origami.test/page/4',
-    'http://origami.test/page/5',
-    'http://origami.test/page/6'
-  ],
+  postPageCount: 6,
   postList: null,
   navMenu: null,
   postTags: null,
@@ -64,8 +57,7 @@ export const initialState = {
     first: false
   },
   fetchError: {},
-  fetchPending: {},
-  count: 1
+  fetchPending: {}
 };
 
 export const initialActions = {
@@ -130,13 +122,13 @@ export const initialActions = {
         );
     });
   },
-  fetchPostList() {
+  fetchPostList(page = null) {
     return new Promise((resolve, reject) => {
       fetch
         .get('/wp-json/wp/v2/posts', {
           params: {
             per_page: config.fetchPostListCount,
-            page: this.state.postPage
+            page: page === null ? this.state.postPage : page
           }
         })
         .then(
@@ -156,7 +148,19 @@ export const initialActions = {
       loaded: { ...this.state.loaded, [loadedName]: true }
     });
   },
-  addCount({ state, setState }) {
-    setState({ ...state, count: state.count + 1 });
+  fetchSearch(search) {
+    return new Promise((resolve, reject) => {
+      fetch
+        .get('/wp-json/wp/v2/posts', { params: { search: search } })
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  },
+  setPostPage(page) {
+    this.setState({ ...this.state, postPage: page });
   }
 };

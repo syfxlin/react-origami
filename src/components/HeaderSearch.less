@@ -1,0 +1,38 @@
+.ori-search {
+  transition: opacity 0.5s;
+  display: block;
+  visibility: hidden;
+  //   opacity: unset;
+}
+
+.fade-enter,
+.fade-appear {
+  visibility: visible;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.fade-enter-active,
+.fade-apper-active {
+  opacity: 1;
+}
+
+.fade-enter-done {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fade-exit {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.fade-exit-active {
+  opacity: 0;
+}
+
+.fade-exit-done {
+  visibility: hidden;
+  opacity: 0;
+}

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import { StoreContext } from '../store/StoreProvider';
 import HeaderMenu from './HeaderMenu';
 import HeaderSearch from './HeaderSearch';
@@ -7,6 +7,7 @@ export default function Header(props) {
   const { loaded, navMenu, themeBackground, themeIndex } = useContext(
     StoreContext
   ).state;
+  const [showSearch, setShowSearch] = useState(false);
   return (
     <>
       <header className="p-fixed ori-header">
@@ -29,7 +30,7 @@ export default function Header(props) {
           </section>
           <section className="navbar-section">
             {loaded.first && <HeaderMenu menu={navMenu} />}
-            <div id="ori-h-search">
+            <div id="ori-h-search" onClick={() => setShowSearch(true)}>
               <i className="fa fa-search"></i>
             </div>
             <div id="ori-h-m-btn">
@@ -40,7 +41,7 @@ export default function Header(props) {
             </div>
           </section>
         </div>
-        <HeaderSearch />
+        <HeaderSearch show={showSearch} setHide={() => setShowSearch(false)} />
       </header>
       <section className="ori-background">
         {themeBackground[themeIndex].background.map((bg, index) => (
