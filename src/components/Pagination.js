@@ -13,9 +13,12 @@ export default function Pagination(props) {
       </li>
     ) : (
       <li className="page-item" key={index}>
-        <a className="page-numbers btn btn-link" onClick={() => toPage(index)}>
+        <button
+          className="page-numbers btn btn-link"
+          onClick={() => toPage(index)}
+        >
           {index}
-        </a>
+        </button>
       </li>
     );
   };
@@ -28,12 +31,12 @@ export default function Pagination(props) {
       <ul className="pagination">
         {currPage !== 1 && (
           <li className="page-item">
-            <a
+            <button
               className="prev page-numbers btn btn-link"
               onClick={() => toPage(currPage - 1)}
             >
               <i className="icon icon-back"></i> 上一页
-            </a>
+            </button>
           </li>
         )}
         {defaultItem(1, true)}
@@ -51,12 +54,12 @@ export default function Pagination(props) {
         {defaultItem(pageCount, true)}
         {currPage !== pageCount && (
           <li className="page-item">
-            <a
+            <button
               className="next page-numbers btn btn-link"
               onClick={() => toPage(currPage + 1)}
             >
               下一页 <i className="icon icon-forward"></i>
-            </a>
+            </button>
           </li>
         )}
       </ul>

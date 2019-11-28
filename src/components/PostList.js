@@ -7,19 +7,25 @@ export default function PostList(props) {
   const { state, actions } = useContext(StoreContext);
   const { postList, postPage, postPageCount } = state;
   const { setPostPage, fetchPostList } = actions;
-  const toPage = page => {
-    setPostPage(page);
-    fetchPostList(page);
+  const toPageIndex = page => {
+    if (!postList[page]) {
+      fetchPostList(page).then(() => {
+        setPostPage(page);
+      });
+    } else {
+      setPostPage(page);
+    }
   };
   return (
     <section className="post-list column col-8 col-md-12">
-      {postList.map(item => (
-        <PostListItem item={item} key={item.id} />
-      ))}
+      {postList[postPage] &&
+        postList[postPage].map(item => (
+          <PostListItem item={item} key={item.id} />
+        ))}
       <Pagination
         pageCount={postPageCount}
         currPage={postPage}
-        toPage={toPage}
+        toPage={toPageIndex}
       />
     </section>
   );

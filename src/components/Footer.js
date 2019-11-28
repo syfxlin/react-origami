@@ -6,6 +6,7 @@ export default function Footer(props) {
   useEffect(() => {
     const scrollE = () => {
       let el = document.getElementById('scroll-top');
+      if (!el) return;
       if (window.scrollY > 50) {
         el.style.opacity = '1';
       } else {

@@ -123,17 +123,21 @@ export const initialActions = {
     });
   },
   fetchPostList(page = null) {
+    let fetchPage = page === null ? this.state.postPage : page;
     return new Promise((resolve, reject) => {
       fetch
         .get('/wp-json/wp/v2/posts', {
           params: {
             per_page: config.fetchPostListCount,
-            page: page === null ? this.state.postPage : page
+            page: fetchPage
           }
         })
         .then(
           res => {
-            this.setState({ ...this.state, postList: res.data });
+            this.setState({
+              ...this.state,
+              postList: { ...this.state.postList, [fetchPage]: res.data }
+            });
             resolve(res);
           },
           err => {

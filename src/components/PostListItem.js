@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { StoreContext } from '../store/StoreProvider';
+import { Link } from 'react-router-dom';
 
 export default function PostListItem(props) {
   const { item } = props;
@@ -8,10 +9,10 @@ export default function PostListItem(props) {
     <article className="card">
       <div className="card-header post-info">
         <h2 className="card-title">
-          <a
-            href={item.link}
+          <Link
+            to={'/post/' + item.id}
             dangerouslySetInnerHTML={{ __html: item.title.rendered }}
-          ></a>
+          ></Link>
         </h2>
         <div className="card-subtitle text-gray">
           <i className="fa fa-calendar"></i>{' '}
@@ -49,9 +50,9 @@ export default function PostListItem(props) {
               )
           )}
         </div>
-        <a href={item.link} className="read-more">
+        <Link className="read-more" to={'/post/' + item.id}>
           阅读全文
-        </a>
+        </Link>
       </div>
     </article>
   );
