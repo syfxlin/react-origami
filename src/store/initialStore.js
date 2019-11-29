@@ -83,7 +83,7 @@ export const initialActions = {
   fetchPostCategories() {
     return new Promise((resolve, reject) => {
       fetch
-        .get('/wp-json/wp/v2/categories', {
+        .get('/api/categories', {
           params: { per_page: config.fetchCategoriesCount }
         })
         .then(
@@ -104,7 +104,7 @@ export const initialActions = {
   fetchPostTags() {
     return new Promise((resolve, reject) => {
       fetch
-        .get('/wp-json/wp/v2/tags', {
+        .get('/api/tags', {
           params: { per_page: config.fetchTagsCount }
         })
         .then(
@@ -126,7 +126,7 @@ export const initialActions = {
     let fetchPage = page === null ? this.state.postPage : page;
     return new Promise((resolve, reject) => {
       fetch
-        .get('/wp-json/wp/v2/posts', {
+        .get('/api/posts', {
           params: {
             per_page: config.fetchPostListCount,
             page: fetchPage
@@ -155,7 +155,7 @@ export const initialActions = {
   fetchSearch(search) {
     return new Promise((resolve, reject) => {
       fetch
-        .get('/wp-json/wp/v2/posts', { params: { search: search } })
+        .get('/api/posts', { params: { search: search } })
         .then(res => {
           resolve(res.data);
         })

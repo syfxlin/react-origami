@@ -11,7 +11,7 @@ export default function PostListItem(props) {
         <h2 className="card-title">
           <Link
             to={'/post/' + item.id}
-            dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+            dangerouslySetInnerHTML={{ __html: item.title }}
           ></Link>
         </h2>
         <div className="card-subtitle text-gray">
@@ -37,7 +37,7 @@ export default function PostListItem(props) {
       </div>
       <div
         className="card-body"
-        dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }}
+        dangerouslySetInnerHTML={{ __html: item.excerpt }}
       ></div>
       <div className="card-footer">
         <div className="post-tags">

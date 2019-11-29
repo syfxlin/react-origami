@@ -49,7 +49,7 @@ export default function PostContainer(props) {
       <div className="s-post-info post-info">
         <h2
           className="card-title"
-          dangerouslySetInnerHTML={{ __html: postItem.title.rendered }}
+          dangerouslySetInnerHTML={{ __html: postItem.title }}
         ></h2>
         <div className="card-subtitle text-gray">
           <time>{postItem.date.substring(0, 10)}</time> •{' '}
@@ -71,7 +71,7 @@ export default function PostContainer(props) {
       </div>
       <article
         className="s-post-content"
-        dangerouslySetInnerHTML={{ __html: postItem.content.rendered }}
+        dangerouslySetInnerHTML={{ __html: postItem.content }}
       ></article>
       <div id="content-copyright">
         <span
