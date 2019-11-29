@@ -12,7 +12,7 @@ export default function App() {
       actions.fetchNavMenu(),
       actions.fetchPostCategories(),
       actions.fetchPostTags(),
-      actions.fetchPostList()
+      actions.fetchPosts()
     ]).then(() => {
       actions.setLoaded('first');
     });

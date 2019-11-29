@@ -5,17 +5,23 @@ import Pagination from './Pagination';
 
 export default function PostList(props) {
   const { state, actions } = useContext(StoreContext);
-  const { postList, postPage, postPageCount } = state;
-  const { setPostPage, fetchPostList } = actions;
+  const { pageList, postPage, postPageCount, postStore } = state;
+  const { setPostPage, fetchPosts } = actions;
   const toPageIndex = page => {
-    fetchPostList(page).then(() => {
+    if (pageList[page]) {
       setPostPage(page);
-    });
+    } else {
+      fetchPosts(page).then(() => {
+        setPostPage(page);
+      });
+    }
   };
   return (
     <section className="post-list column col-8 col-md-12">
-      {postList &&
-        postList.map(item => <PostListItem item={item} key={item.id} />)}
+      {pageList[postPage] &&
+        pageList[postPage].map(index => (
+          <PostListItem item={postStore[index]} key={postStore[index].id} />
+        ))}
       <Pagination
         pageCount={postPageCount}
         currPage={postPage}

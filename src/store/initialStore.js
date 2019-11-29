@@ -28,8 +28,9 @@ export const initialState = {
   ],
   footerText: `<span class="my-face">(●'◡'●)ﾉ</span> © 2019 Otstar Cloud<br />站点已经运行了<span id="timeDate">878天</span><span id="times">21小时32分26秒</span>`,
   postPage: 1,
-  postPageCount: 6,
-  postList: null,
+  postPageCount: 1,
+  pageList: {},
+  postStore: {},
   navMenu: null,
   postTags: null,
   postCategories: null,
@@ -69,7 +70,7 @@ export const initialActions = {
             ...this.state,
             navMenu: {
               isRoot: true,
-              sub: res.data
+              sub: res.data.data
             }
           });
           resolve(res);
@@ -89,7 +90,7 @@ export const initialActions = {
         .then(
           res => {
             let cats = {};
-            for (const cat of res.data) {
+            for (const cat of res.data.data) {
               cats[cat.id] = cat;
             }
             this.setState({ ...this.state, postCategories: cats });
@@ -110,7 +111,7 @@ export const initialActions = {
         .then(
           res => {
             let tags = {};
-            for (const tag of res.data) {
+            for (const tag of res.data.data) {
               tags[tag.id] = tag;
             }
             this.setState({ ...this.state, postTags: tags });
@@ -122,21 +123,29 @@ export const initialActions = {
         );
     });
   },
-  fetchPostList(page = null) {
+  fetchPosts(page = null) {
     let fetchPage = page === null ? this.state.postPage : page;
     return new Promise((resolve, reject) => {
       fetch
         .get('/api/posts', {
           params: {
-            per_page: config.fetchPostListCount,
+            per_page: config.fetchPostsCount,
             page: fetchPage
           }
         })
         .then(
           res => {
+            let posts = {};
+            let postIds = [];
+            for (const post of res.data.data) {
+              posts[post.id] = post;
+              postIds.push(post.id);
+            }
             this.setState({
               ...this.state,
-              postList: res.data
+              pageList: { ...this.state.pageList, [fetchPage]: postIds },
+              postPageCount: res.data.pages,
+              postStore: { ...this.state.postStore, ...posts }
             });
             resolve(res);
           },
@@ -166,5 +175,26 @@ export const initialActions = {
   },
   setPostPage(page) {
     this.setState({ ...this.state, postPage: page });
+  },
+  getPost(postId) {
+    return new Promise((resolve, reject) => {
+      let post = this.state.postStore[postId];
+      if (!post) {
+        fetch
+          .get('/api/posts/' + postId)
+          .then(res => {
+            this.setState({
+              ...this.state,
+              postStore: { ...this.state.postStore, [postId]: res.data }
+            });
+            resolve(res.data);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      } else {
+        resolve(post);
+      }
+    });
   }
 };

@@ -51,7 +51,7 @@ export default function Pagination(props) {
             <span className="page-numbers dots">…</span>
           </li>
         )}
-        {defaultItem(pageCount, true)}
+        {defaultItem(pageCount, pageCount !== 1)}
         {currPage !== pageCount && (
           <li className="page-item">
             <button
