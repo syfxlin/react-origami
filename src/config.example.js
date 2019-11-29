@@ -1,9 +1,9 @@
 const dev = {
-  baseURL: 'http://origami.test'
+  baseURL: ''
 };
 
 const prod = {
-  baseURL: 'https://blog.ixk.me',
+  baseURL: '',
   fetchCategoriesCount: 100,
   fetchTagsCount: 100,
   fetchPostListCount: 10

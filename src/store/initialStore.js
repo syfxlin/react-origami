@@ -63,7 +63,7 @@ export const initialState = {
 export const initialActions = {
   fetchNavMenu() {
     return new Promise((resolve, reject) => {
-      fetch.get('/wp-json/origami/v1/nav_menu').then(
+      fetch.get('/api/nav_menu').then(
         res => {
           this.setState({
             ...this.state,
@@ -136,7 +136,7 @@ export const initialActions = {
           res => {
             this.setState({
               ...this.state,
-              postList: { ...this.state.postList, [fetchPage]: res.data }
+              postList: res.data
             });
             resolve(res);
           },
