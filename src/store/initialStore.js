@@ -2,6 +2,7 @@ import fetch from '../utils/fetch';
 import config from '../config';
 
 export const initialState = {
+  pageType: 'home',
   heroType: 3,
   heroBackground: [
     'https://blog.ixk.me/bing-api.php?size=1024x768&day=1',
@@ -159,6 +160,12 @@ export const initialActions = {
     this.setState({
       ...this.state,
       loaded: { ...this.state.loaded, [loadedName]: true }
+    });
+  },
+  setPageType(type) {
+    this.setState({
+      ...this.state,
+      pageType: type
     });
   },
   fetchSearch(search) {

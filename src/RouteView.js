@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+export { Route, Switch, Redirect };
+
 export default function RouteView(props) {
   let alias = [];
   return (

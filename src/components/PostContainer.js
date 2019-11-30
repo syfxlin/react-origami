@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { StoreContext } from '../store/StoreProvider';
 
 const loadJS = url => {
@@ -15,15 +15,21 @@ const loadJS = url => {
 };
 
 export default function PostContainer(props) {
-  const { postId } = props.match.params;
+  const { postId } = useParams();
   const store = useContext(StoreContext);
   const { postCategories, postTags } = store.state;
   const { getPost } = store.actions;
   const [postItem, setPostItem] = useState(null);
   useEffect(() => {
+    let unmounted = false;
     getPost(postId).then(post => {
-      setPostItem(post);
+      if (!unmounted) {
+        setPostItem(post);
+      }
     });
+    return () => {
+      unmounted = true;
+    };
   });
   useEffect(() => {
     loadJS('http://origami.test/wp-content/themes/Origami/js/prism.js').then(
@@ -103,12 +109,8 @@ export default function PostContainer(props) {
               <a href="https://blog.ixk.me">青空之蓝</a>
               <br />
               本文地址:
-              <a
-                rel="bookmark"
-                title="为Vuex添加同步Action"
-                href="https://blog.ixk.me/add-sync-action-for-vuex.html"
-              >
-                为Vuex添加同步Action
+              <a rel="bookmark" title={postItem.title} href={postItem.link}>
+                {postItem.title}
               </a>
             </span>
           </div>

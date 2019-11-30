@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import './App.less';
 import { StoreContext } from '../store/StoreProvider';
-import Header from '../components/Header';
-import Main from '../components/Main';
-import Footer from '../components/Footer';
+import RouteView from '../RouteView';
+import Home from './Home';
+import Post from './Post';
 
 export default function App() {
   const { actions } = useContext(StoreContext);
@@ -20,9 +20,18 @@ export default function App() {
   }, []);
   return (
     <div className="App">
-      <Header />
-      <Main />
-      <Footer />
+      <RouteView
+        route={[
+          {
+            path: '/',
+            component: props => <Home {...props} />
+          },
+          {
+            path: '/post/:postId',
+            component: props => <Post {...props} />
+          }
+        ]}
+      />
     </div>
   );
 }
