@@ -4,7 +4,7 @@ export default function HeaderMenu(props) {
   const { menu } = props;
   return (
     <ul
-      id={menu.isRoot ? 'ori-h-menu' : ''}
+      id={menu.isRoot ? 'ori-menu' : ''}
       className={!menu.isRoot ? 'sub-menu' : ''}
     >
       {menu.sub.map(item => (

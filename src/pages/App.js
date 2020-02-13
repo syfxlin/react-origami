@@ -23,7 +23,8 @@ export default function App() {
       <RouteView
         route={[
           {
-            path: '/',
+            path: '/:postPage?',
+            exact: true,
             component: props => <Home {...props} />
           },
           {

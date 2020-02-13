@@ -29,7 +29,7 @@ export default function Header(props) {
       } else {
         // let target =
         //   document.getElementsByClassName('carousel')[0].clientHeight -
-        //   document.getElementsByClassName('ori-header')[0].clientHeight;
+        //   document.getElementsByClassName('ori-eader')[0].clientHeight;
         // let scrollE = function() {
         //   if (window.scrollY >= target) {
         //     document.body.classList.add('not-car');
@@ -64,10 +64,10 @@ export default function Header(props) {
           </section>
           <section className="navbar-section">
             {loaded.first && <HeaderMenu menu={navMenu} />}
-            <div id="ori-h-search" onClick={() => setShowSearch(true)}>
+            <div id="ori-search" onClick={() => setShowSearch(true)}>
               <i className="fa fa-search"></i>
             </div>
-            <div id="ori-h-m-btn">
+            <div id="ori-m-btn">
               <span></span>
               <span></span>
               <span></span>

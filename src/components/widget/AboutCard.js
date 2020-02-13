@@ -7,12 +7,12 @@ export default function AboutCard(props) {
         className="lazy loaded about-card-image"
         style={{
           backgroundImage:
-            'url(http://origami.test/wp-content/uploads/2019/02/72390209_p0.jpg)'
+            'url(http://origami.ixk.me/wp-content/uploads/2019/02/72390209_p0.jpg)'
         }}
       >
         <img
           className="lazy loaded lazy-bg-loaded-flag"
-          src="http://origami.test/wp-content/uploads/2019/02/72390209_p0.jpg"
+          src="http://origami.ixk.me/wp-content/uploads/2019/02/72390209_p0.jpg"
           alt=""
         />
       </div>

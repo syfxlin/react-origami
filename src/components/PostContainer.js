@@ -22,20 +22,20 @@ export default function PostContainer(props) {
   const [postItem, setPostItem] = useState(null);
   useEffect(() => {
     let unmounted = false;
-    getPost(postId).then(post => {
-      if (!unmounted) {
+    if (!unmounted && postId) {
+      getPost(postId).then(post => {
         setPostItem(post);
-      }
-    });
+      });
+    }
     return () => {
       unmounted = true;
     };
   });
   useEffect(() => {
-    loadJS('http://origami.test/wp-content/themes/Origami/js/prism.js').then(
+    loadJS('http://origami.ixk.me/wp-content/themes/Origami/js/prism.js').then(
       () => {
         window.Prism.plugins.autoloader.languages_path =
-          'http://origami.test/wp-content/themes/Origami/js/prism-components/';
+          'http://origami.ixk.me/wp-content/themes/Origami/js/prism-components/';
       }
     );
   }, []);
@@ -43,9 +43,10 @@ export default function PostContainer(props) {
     if (window.Prism) {
       window.Prism.highlightAll();
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [postItem]);
   return (
-    <section className="s-post-container column col-8 col-md-12">
+    <section className="s-container column col-8 col-md-12">
       {/* <ul className="breadcrumb ">
         <li className="breadcrumb-item">
           <a>首页</a>
@@ -59,7 +60,7 @@ export default function PostContainer(props) {
       </ul> */}
       {postItem && (
         <>
-          <div className="s-post-info post-info">
+          <div className="s-info post-info">
             <h2
               className="card-title"
               dangerouslySetInnerHTML={{ __html: postItem.title }}
@@ -83,7 +84,7 @@ export default function PostContainer(props) {
             </div>
           </div>
           <article
-            className="s-post-content"
+            className="s-content"
             dangerouslySetInnerHTML={{ __html: postItem.content }}
           ></article>
           <div id="content-copyright">
@@ -114,7 +115,7 @@ export default function PostContainer(props) {
               </a>
             </span>
           </div>
-          <div className="s-post-tags">
+          <div className="s-tags">
             <div className="post-tags">
               {postItem.tags.map(
                 tag =>
@@ -126,7 +127,7 @@ export default function PostContainer(props) {
               )}
             </div>
           </div>
-          <div className="s-post-nav">
+          <div className="s-nav">
             <section className="post-pagination">
               <ul className="pagination">
                 {/* TODO: 文章需要读取到没有为止 */}

@@ -61,7 +61,7 @@ export default function HeaderSearch(props) {
             </div>
           </section>
           <section className="navbar-section">
-            <div id="ori-h-search-close" onClick={() => setHide()}>
+            <div id="ori-search-close" onClick={() => setHide()}>
               <i className="fa fa-close"></i>
             </div>
           </section>

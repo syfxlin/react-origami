@@ -19,7 +19,7 @@ export default function RouteView(props) {
             path={item.path}
             component={item.component}
             key={item.path}
-            exact={item.path === '/'}
+            exact={item.path === '/' || item.exact}
           />
         );
       })}

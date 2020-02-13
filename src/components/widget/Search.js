@@ -7,7 +7,7 @@ export default function Search(props) {
         method="get"
         id="searchform"
         className="input-group"
-        action="http://origami.test/"
+        action="http://origami.ixk.me/"
       >
         <label htmlFor="s" className="input-group-addon">
           搜索

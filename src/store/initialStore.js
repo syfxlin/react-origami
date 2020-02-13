@@ -13,17 +13,17 @@ export const initialState = {
   themeIndex: 0,
   themeBackground: [
     {
-      name: 'Background1',
+      name: '琉璃の空',
       background: [
-        'https://i.loli.net/2019/04/23/5cbf1354a41b6.jpg',
-        'https://i.loli.net/2019/04/23/5cbf136bdc2d3.jpg',
-        'https://i.loli.net/2019/04/23/5cbf136fe0333.jpg',
-        'https://i.loli.net/2019/04/23/5cbf137481842.jpg',
-        'https://i.loli.net/2019/04/23/5cbf1379952b2.jpg',
-        'https://i.loli.net/2019/04/23/5cbf13983c5ef.jpg',
-        'https://i.loli.net/2019/04/23/5cbf139c68120.jpg',
-        'https://i.loli.net/2019/04/23/5cbf13a0a95a2.jpg',
-        'https://i.loli.net/2019/04/25/5cc08b39e2f20.jpg'
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223.jpg',
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223-1.jpg',
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223-2.jpg',
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223-3.jpg',
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223-4.jpg',
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223-5.jpg',
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223-6.jpg',
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223-7.jpg',
+        'https://cdn.jsdelivr.net/gh/syfxlin/pic/2020/01/20200117213223-8.jpg'
       ]
     }
   ],
@@ -39,19 +39,19 @@ export const initialState = {
     1: {
       id: 1,
       name: '2019年一月',
-      link: 'http://origami.test/2019/01',
+      link: 'http://origami.ixk.me/2019/01',
       count: 1
     },
     2: {
       id: 2,
       name: '2019年一月',
-      link: 'http://origami.test/2019/01',
+      link: 'http://origami.ixk.me/2019/01',
       count: 2
     },
     3: {
       id: 3,
       name: '2019年一月',
-      link: 'http://origami.test/2019/01',
+      link: 'http://origami.ixk.me/2019/01',
       count: 3
     }
   },
